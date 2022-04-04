@@ -17,17 +17,17 @@ This program also calculates the time taken for the program to run.
 #include <math.h>
 #include <time.h>
 
-void collatz(unsigned long);
+void collatz(unsigned long long);
 
 
 int main(int argc, char *argv[]) {
 
-    unsigned long j = atoi(argv[1]);                     // command line argument/value to run collatz conjecture to
+    unsigned long long j = atoi(argv[1]);                     // command line argument/value to run collatz conjecture to
 
     double time_spent = 0.0;                    // init run time
     clock_t begin = clock();                    // start run time
 
-    for(long i = 1; i <= j; i++) {              // run collatz conjecture until the value passed as a CLA
+    for(unsigned long long i = 1; i <= j; i++) {              // run collatz conjecture until the value passed as a CLA
         collatz(i);
     }
 
@@ -35,13 +35,13 @@ int main(int argc, char *argv[]) {
 
                                                 // calculate run time in seconds
     time_spent += (double)(end - begin) / CLOCKS_PER_SEC; 
-    printf("Time spent running collatz conjecture to value %ld takes %f seconds \n", j, time_spent);
+    printf("Time spent running collatz conjecture to value %llu takes %f seconds \n", j, time_spent);
 
 }
 
-void collatz(unsigned long i) {
+void collatz(unsigned long long i) {
     //int i = 1;
-    unsigned long j = i;                                 // value being tested
+    unsigned long long j = i;                                 // value being tested
     while(i > 1){                               // basis of conjecture that all positives numbers return to 1
         if(i % 2 == 0) {                        // collatz rule for even numbers
             i = i /2;
@@ -53,10 +53,10 @@ void collatz(unsigned long i) {
         }
     }
     if(i == 1) {
-        printf("The value %ld goes to 1 \n", j); 
+        printf("The value %llu goes to 1 \n", j); 
     }
     else if(i != 1) {
-        printf("Holy smokes %ld broke the collatz problem \n", j);
+        printf("Holy smokes %llu broke the collatz problem \n", j);
     }
 }
 
